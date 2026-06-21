@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
 <title>MazaoCheck — Know the real price of your crops</title>
 <meta property="og:title" content="MazaoCheck — Jua bei halisi ya mazao yako">
-<meta property="og:description" content="Free tool showing the official KNBS government crop price vs the broker's. Works on any phone. 28 crops, bilingual, no install.">
+<meta property="og:description" content="Free tool showing the official KNBS government crop price vs the broker's. Works on any phone. 29 crops & animal products, bilingual, no install.">
 <meta property="og:image" content="https://geraldkombo.github.io/mazaocheck/assets/share-card.svg">
 <meta property="og:url" content="https://geraldkombo.github.io/mazaocheck/">
 <meta name="theme-color" content="#22543D">
@@ -120,9 +120,11 @@ header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;ba
 .count{font-size:14px;font-weight:850;color:#5A5349}
 .btn-new{background:var(--leaf);color:#fff;border:0;border-radius:14px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;min-height:44px;box-shadow:0 5px 13px rgba(45,106,79,.18);white-space:nowrap}
 .report-list-wrap{background:var(--card);border-radius:20px;padding:4px 16px;border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow2)}
-.report-item{padding:14px 0;border-bottom:1px solid #EFE5D7;font-size:13px;display:flex;align-items:center;gap:10px;min-height:50px}
+.report-item{padding:14px 0;border-bottom:1px solid #EFE5D7;font-size:13px;display:flex;align-items:center;gap:10px;min-height:50px;min-width:0}
 .report-item:last-child{border-bottom:0}
-.r-crop{font-weight:900;color:var(--ink)}.r-price{font-weight:900;color:var(--danger)}.r-meta{color:#756E64;font-size:12px;margin-left:auto;white-space:nowrap;font-weight:700}
+.r-crop{font-weight:900;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r-price{font-weight:900;color:var(--danger);flex-shrink:0}
+.r-meta{color:#756E64;font-size:12px;margin-left:auto;white-space:nowrap;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .empty{text-align:center;padding:30px 12px;color:#70685D;font-weight:750}
 .empty .ico{font-size:38px;display:block;margin-bottom:7px}
 .btn-export{display:block;width:100%;text-align:center;background:var(--card);color:var(--leaf);border:2px solid var(--leaf);border-radius:18px;padding:14px;font-size:14px;font-weight:900;cursor:pointer;min-height:50px}
@@ -292,7 +294,7 @@ const PRICES = {
     { key:"avocado",name:"Avocado",nameSw:"Parachichi",unit:"per piece",govPrice:30,brokerPrice:18,cat:"fruit",tip:"Avocado trees start bearing after 3–4 years — interplant with annual crops while young." },
     { key:"mangoes",name:"Mangoes",nameSw:"Maembe",unit:"per piece",govPrice:25,brokerPrice:15,cat:"fruit",tip:"Mango trees need minimal water once established — ideal for semi-arid areas." },
     { key:"passion fruit",name:"Passion Fruit",nameSw:"Pasheni",unit:"per piece",govPrice:10,brokerPrice:6,cat:"fruit",tip:"Passion fruit vines produce within 8 months — good quick cash crop for small farms." },
-    { key:"pineapple",name:"Pineapple",nameSw:"Nazi / Mananasi",unit:"per piece",govPrice:80,brokerPrice:55,cat:"fruit",tip:"Pineapple grows on marginal soil with little water — plant on ridges to prevent rot." },
+    { key:"pineapple",name:"Pineapple",nameSw:"Nanasi / Mananasi",unit:"per piece",govPrice:80,brokerPrice:55,cat:"fruit",tip:"Pineapple grows on marginal soil with little water — plant on ridges to prevent rot." },
     { key:"milk",name:"Milk",nameSw:"Maziwa",unit:"per litre",govPrice:60,brokerPrice:42,cat:"animal",tip:"Clean water and shade for dairy cows directly improve milk quality and yield." },
     { key:"eggs",name:"Eggs",nameSw:"Mayai",unit:"per tray",govPrice:480,brokerPrice:360,cat:"animal",tip:"Free-range hens on kitchen scraps and greens produce eggs with deeper yolks." },
     { key:"chicken",name:"Free-range Chicken",nameSw:"Kuku wa Kienyeji",unit:"per bird",govPrice:800,brokerPrice:550,cat:"animal",tip:"Indigenous chickens need minimal feeding — they scavenge and control pests naturally." },
@@ -302,7 +304,7 @@ const PRICES = {
 
 let currentCrop = null, activeCat = "all", currentTab = "prices", firstGrid = true, searchTimer = null, toastTimer = null;
 
-document.getElementById("headerUpdated").textContent = "● Prices last updated: " + fmtDate(PRICES.lastUpdated) + " · " + PRICES.crops.length + " crops · KNBS/AFA";
+document.getElementById("headerUpdated").textContent = "● Prices last updated: " + fmtDate(PRICES.lastUpdated) + " · " + PRICES.crops.length + " products · KNBS/AFA";
 
 function fmtDate(iso) {
   const m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
