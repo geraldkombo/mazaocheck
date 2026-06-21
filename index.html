@@ -25,6 +25,7 @@
   --r-sm:12px;--r-md:16px;--r-lg:24px;--r-xl:30px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,Arial,sans-serif;background:
   radial-gradient(circle at 20% -10%,#EAF4DC 0 18%,transparent 42%),
@@ -81,6 +82,7 @@ header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;ba
 .crop-card .name{font-weight:900;font-size:15px;color:var(--ink);padding-right:56px;line-height:1.15}
 .crop-card .name-sw{font-size:12px;color:#5E5A52;margin-top:4px;font-weight:750;line-height:1.25}
 .crop-card .unit{font-size:11px;color:#7C746A;margin-top:3px;font-weight:700}
+.crop-card .name,.crop-card .name-sw,.crop-card .unit{overflow-wrap:anywhere}
 .crop-card .prices{display:flex;justify-content:space-between;margin-top:11px;font-size:14px;align-items:center;gap:8px}
 .crop-card .govt,.crop-card .broker{font-weight:900;letter-spacing:-.2px}
 .crop-card .govt{color:#17692F}.crop-card .broker{color:var(--danger)}
