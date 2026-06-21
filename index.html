@@ -2,153 +2,203 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
 <title>MazaoCheck — Know the real price of your crops</title>
 <meta property="og:title" content="MazaoCheck — Jua bei halisi ya mazao yako">
 <meta property="og:description" content="Free tool showing the official KNBS government crop price vs the broker's. Works on any phone. 28 crops, bilingual, no install.">
 <meta property="og:image" content="https://geraldkombo.github.io/mazaocheck/assets/share-card.svg">
 <meta property="og:url" content="https://geraldkombo.github.io/mazaocheck/">
-<meta name="theme-color" content="#2E7D32">
+<meta name="theme-color" content="#22543D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green-dark: #1B4332; --green-mid: #2D6A4F; --green-light: #95D5B2;
-    --amber: #D4A373; --amber-bg: #FEF3E2; --amber-dark: #B86A00;
-    --red: #C62828; --red-bar: #E53935; --green-bar: #43A047; --green-govt: #1B5E20;
-    --earth-bg: #f5f0eb; --earth-border: #ede8e2; --earth-card: #FFFFFF;
-    --ink: #1B1B1B; --muted: #8B7E74; --muted-light: #999;
-    --radius-sm: 10px; --radius-md: 14px; --radius-lg: 20px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--earth-bg);color:var(--ink);min-height:100vh;line-height:1.5}
-  .wrap{max-width:560px;margin:0 auto;padding:16px}
+:root{
+  --forest:#163B2B;--leaf:#2D6A4F;--leaf2:#3E8B5E;--mint:#DDEFE2;
+  --soil:#8F4D2E;--terra:#B85C38;--amber:#D58A2F;--amber-bg:#FFF1D8;
+  --danger:#B42318;--danger2:#E5483D;--ok:#208142;--ok2:#54B46A;
+  --bg:#F7F1E8;--card:#FFFDF8;--line:#E6DCCC;--track:#F0E7DA;
+  --ink:#1F211C;--soft:#5F6259;--muted:#7B756B;--pale:#A39A8E;
+  --ring:rgba(213,138,47,.45);--shadow:0 10px 30px rgba(48,31,18,.09);
+  --shadow2:0 3px 12px rgba(48,31,18,.08);
+  --r-sm:12px;--r-md:16px;--r-lg:24px;--r-xl:30px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,Arial,sans-serif;background:
+  radial-gradient(circle at 20% -10%,#EAF4DC 0 18%,transparent 42%),
+  linear-gradient(180deg,#FBF7EE 0%,var(--bg) 38%,#F2E8DA 100%);
+  color:var(--ink);min-height:100vh;line-height:1.5;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,input,select{font:inherit}
+button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ring);outline-offset:3px}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
 
-  header{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:#fff;border-radius:var(--radius-lg);padding:28px 20px 22px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
-  header::before{content:"";position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:rgba(255,255,255,.04);border-radius:50%}
-  header .logo-mark{font-family:Montserrat;font-size:28px;font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;justify-content:center;gap:8px}
-  header .logo-mark .leaf{color:var(--green-light);font-size:30px}
-  header .tagline{font-size:14px;opacity:.9;margin-top:4px;line-height:1.5;font-weight:400}
-  header .tagline .sw{opacity:.75;font-size:13px;display:block;margin-top:2px}
-  header .updated{font-size:11px;opacity:.6;margin-top:10px;letter-spacing:.3px}
+/* Header */
+header{background:
+  linear-gradient(135deg,rgba(255,255,255,.08) 0 1px,transparent 1px 14px),
+  linear-gradient(140deg,var(--forest),var(--leaf) 58%,#347A4F);
+  color:#fff;border-radius:var(--r-xl);padding:30px 20px 18px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 16px 34px rgba(22,59,43,.22)}
+header:before{content:"";position:absolute;inset:auto -30px -45px auto;width:155px;height:155px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),rgba(255,255,255,0) 68%)}
+header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;background:linear-gradient(90deg,rgba(143,77,46,.55),rgba(213,138,47,.44),rgba(58,124,78,.38));opacity:.75}
+.logo-mark{font-family:Montserrat,sans-serif;font-size:31px;font-weight:900;letter-spacing:-.9px;display:flex;align-items:center;justify-content:center;gap:9px;position:relative;z-index:1}
+.leaf{display:grid;place-items:center;width:38px;height:38px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.tagline{font-size:15px;opacity:.98;margin-top:7px;font-weight:700;position:relative;z-index:1}
+.tagline .sw{font-size:15px;display:block;margin-top:3px;font-weight:700;opacity:.92}
+.updated{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#1F3D2B;background:#FFF8E8;border:1px solid rgba(255,255,255,.35);padding:6px 10px;border-radius:999px;margin-top:13px;font-weight:800;letter-spacing:.15px;position:relative;z-index:1;box-shadow:0 3px 10px rgba(0,0,0,.08)}
 
-  .tab-bar{display:flex;gap:4px;margin-bottom:14px;background:var(--earth-border);border-radius:var(--radius-md);padding:4px}
-  .tab-bar button{flex:1;padding:12px;border:none;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:var(--muted);border-radius:11px;transition:all .15s;min-height:44px}
-  .tab-bar button.active{background:var(--earth-card);color:var(--green-mid);box-shadow:0 1px 4px rgba(0,0,0,.08);font-weight:700}
+/* Tabs */
+.tab-bar{display:flex;gap:5px;margin-bottom:14px;background:#EAE0D1;border-radius:18px;padding:5px;position:relative;box-shadow:inset 0 1px 2px rgba(70,45,22,.08)} 
+.tab-bar button{flex:1;padding:12px;border:0;font-size:14px;font-weight:800;cursor:pointer;background:transparent;color:#665E53;border-radius:14px;transition:color .18s,transform .18s;min-height:46px;position:relative}
+.tab-bar button.active{background:var(--card);color:var(--leaf);box-shadow:0 4px 12px rgba(50,34,18,.12)}
+.tab-bar button:active{transform:scale(.97)}
+.tab-bar button[aria-selected=true]:after{content:"";position:absolute;left:28%;right:28%;bottom:5px;height:3px;border-radius:9px;background:var(--amber)}
 
-  .search-box{background:var(--earth-card);border-radius:var(--radius-md);padding:2px 16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;align-items:center;border:1px solid var(--earth-border)}
-  .search-box input{border:none;outline:none;font-size:16px;padding:14px 0;width:100%;background:transparent;color:var(--ink);min-height:44px}
-  .search-box input::placeholder{color:#aaa}
+/* Search/filter */
+.search-box{background:var(--card);border-radius:18px;padding:0 14px;margin-bottom:12px;box-shadow:var(--shadow2);display:flex;align-items:center;border:1px solid var(--line)}
+.search-box:before{content:"🔎";font-size:16px;margin-right:8px;opacity:.7}
+.search-box input{border:0;outline:0;font-size:16px;padding:15px 0;width:100%;background:transparent;color:var(--ink);min-height:48px;font-weight:650}
+.search-box input::placeholder{color:#8D857A}
+.cat-filter{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 14px;padding:0 16px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cat-filter::-webkit-scrollbar{display:none}
+.cat-filter button{white-space:nowrap;padding:10px 18px;border-radius:100px;border:1.5px solid #D7CCBA;background:var(--card);font-size:13px;font-weight:800;cursor:pointer;color:#625A50;transition:transform .16s,background .16s,box-shadow .16s;flex-shrink:0;min-height:44px}
+.cat-filter button.active{background:var(--leaf);color:#fff;border-color:var(--leaf);box-shadow:0 6px 16px rgba(45,106,79,.25)}
+.cat-filter button:active{transform:scale(.94)}
 
-  .cat-filter{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .cat-filter::-webkit-scrollbar{display:none}
-  .cat-filter button{white-space:nowrap;padding:10px 20px;border-radius:100px;border:1.5px solid #d4cfc9;background:var(--earth-card);font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s;flex-shrink:0;min-height:44px}
-  .cat-filter button.active{background:var(--green-mid);color:#fff;border-color:var(--green-mid);box-shadow:0 2px 8px rgba(45,106,79,.25)}
-  .cat-filter button:active{transform:scale(.95)}
+/* Grid/cards */
+.crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px;contain:content}
+.section-label{font-size:12px;font-weight:900;color:#675F54;margin:8px 0 0;text-transform:uppercase;letter-spacing:.9px;grid-column:1/-1;display:flex;align-items:center;gap:8px}
+.section-label:after{content:"";height:1px;flex:1;background:var(--line)}
+.crop-card{background:linear-gradient(180deg,#FFFDF9,#FFF9F1);border-radius:19px;padding:16px 13px 15px;box-shadow:var(--shadow2);cursor:pointer;transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;overflow:hidden;border:1px solid var(--line);min-height:128px;contain:content;will-change:transform,opacity}
+.crop-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--leaf)}
+.crop-card[data-cat=traditional]:before{background:var(--amber)}
+.crop-card[data-cat=cereal]:before{background:#A36D27}
+.crop-card[data-cat=fruit]:before{background:#D9782D}
+.crop-card[data-cat=animal]:before{background:#3D75A3}
+.crop-card:hover{box-shadow:0 12px 26px rgba(70,45,22,.12)}
+.crop-card:active{transform:scale(.965);box-shadow:0 2px 8px rgba(70,45,22,.08)}
+.crop-card .name{font-weight:900;font-size:15px;color:var(--ink);padding-right:56px;line-height:1.15}
+.crop-card .name-sw{font-size:12px;color:#5E5A52;margin-top:4px;font-weight:750;line-height:1.25}
+.crop-card .unit{font-size:11px;color:#7C746A;margin-top:3px;font-weight:700}
+.crop-card .prices{display:flex;justify-content:space-between;margin-top:11px;font-size:14px;align-items:center;gap:8px}
+.crop-card .govt,.crop-card .broker{font-weight:900;letter-spacing:-.2px}
+.crop-card .govt{color:#17692F}.crop-card .broker{color:var(--danger)}
+.crop-card .loss{display:inline-block;background:var(--amber-bg);color:#8C470B;font-size:11px;font-weight:900;padding:4px 10px;border-radius:100px;margin-top:9px;border:1px solid #F5D39B}
+.trad-badge{position:absolute;top:9px;right:8px;background:#FFF0D2;color:#8C470B;font-size:9px;font-weight:900;padding:3px 8px;border-radius:100px;letter-spacing:.35px;border:1px solid #F3CD89}
 
-  .crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-  .crop-card{background:var(--earth-card);border-radius:16px;padding:16px 14px;box-shadow:0 2px 8px rgba(0,0,0,.05);cursor:pointer;transition:all .15s;position:relative;overflow:hidden;border:1px solid var(--earth-border);min-height:120px}
-  .crop-card:active{transform:scale(.96)}
-  .crop-card .name{font-weight:700;font-size:15px;color:var(--ink)}
-  .crop-card .name-sw{font-size:11px;color:var(--muted-light);margin-top:2px}
-  .crop-card .unit{font-size:11px;color:#888;margin-top:2px}
-  .crop-card .prices{display:flex;justify-content:space-between;margin-top:10px;font-size:14px;align-items:center}
-  .crop-card .govt{color:var(--green-govt);font-weight:700}
-  .crop-card .broker{color:var(--red);font-weight:700}
-  .crop-card .loss{display:inline-block;background:var(--amber-bg);color:var(--amber-dark);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-top:8px}
-  .crop-card .trad-badge{position:absolute;top:8px;right:8px;background:var(--amber-bg);color:var(--amber-dark);font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.3px}
-  .section-label{font-size:13px;font-weight:700;color:var(--muted);margin:6px 0 8px;text-transform:uppercase;letter-spacing:.8px;grid-column:1/-1}
+/* Detail */
+.detail{background:var(--card);border-radius:var(--r-xl);padding:24px;margin-bottom:16px;box-shadow:var(--shadow);display:none;border:1px solid var(--line);overflow:hidden}
+.detail.show{display:block}
+.d-name{font-size:26px;font-weight:900;color:var(--ink);letter-spacing:-.6px;line-height:1.12;font-family:Montserrat,sans-serif}
+.d-name-sw{font-size:15px;color:#514D46;margin-top:3px;font-weight:800}
+.d-unit{font-size:13px;color:#746D62;margin:4px 0 18px;font-weight:700}
+.bar-wrap{margin:14px 0}
+.bar-label{display:flex;justify-content:space-between;align-items:end;font-size:14px;margin-bottom:6px;gap:8px}
+.bar-label .label{font-weight:900}.bar-label .val{font-weight:900;font-size:18px;letter-spacing:-.4px}
+.bar-track{background:var(--track);border-radius:11px;margin-bottom:14px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(70,45,22,.08)}
+.bar{height:35px;border-radius:11px;min-width:5px;width:0;position:relative}
+.bar:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0))}
+.bar-red{background:linear-gradient(90deg,var(--danger2),var(--danger))}
+.bar-green{background:linear-gradient(90deg,var(--ok2),var(--ok))}
+.d-loss{background:linear-gradient(180deg,#FFF5DF,#FFE8BC);border-radius:19px;padding:17px 16px;margin:18px 0;text-align:center;border:1.5px solid #F2C678;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.d-loss .big{font-size:22px;font-weight:900;color:#893A13;line-height:1.25;letter-spacing:-.3px}
+.d-loss .sub{font-size:15px;color:#5F564A;margin-top:7px;font-weight:800}
+.d-tip{font-size:14px;color:#3F433B;padding:14px 15px;background:#F5EFE6;border-radius:15px;line-height:1.5;margin:13px 0;font-weight:650;border:1px solid #E8DDCD}
+.d-source{font-size:11px;color:#766F65;margin-top:10px;line-height:1.45;font-weight:650}
+.d-onehealth{text-align:left;font-size:14px;font-weight:900;color:#1E5B38;padding:15px;margin:15px 0;background:linear-gradient(180deg,#EEF8EF,#E5F1E7);border-radius:18px;line-height:1.45;border:1px solid #CCE5D2;border-left:5px solid var(--leaf)}
+.d-onehealth .sw{font-weight:850;opacity:.95;font-size:14px;display:block;margin-top:6px;color:#285540}
+.btn-report,.btn-close,.btn-new,.btn-export,.btn-submit,.btn-cancel{transition:transform .15s,background .15s,box-shadow .15s}
+.btn-report{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--leaf),#347A4F);color:#fff;border:0;border-radius:18px;padding:16px;font-size:16px;font-weight:900;cursor:pointer;margin-top:10px;min-height:54px;box-shadow:0 8px 18px rgba(45,106,79,.22)}
+.btn-report:active,.btn-submit:active,.btn-new:active{background:var(--forest);transform:scale(.98)}
+.btn-close{display:block;width:100%;text-align:center;background:#F2E9DC;color:#5E564C;border:0;border-radius:16px;padding:14px;font-size:14px;font-weight:850;cursor:pointer;margin-top:9px;min-height:48px}
+.btn-close:active,.btn-cancel:active{background:#E5D9C8;transform:scale(.98)}
 
-  .detail{background:var(--earth-card);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);display:none;border:1px solid var(--earth-border)}
-  .detail.show{display:block}
-  .detail .d-name{font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.3px;line-height:1.2;font-family:Montserrat}
-  .detail .d-name-sw{font-size:14px;color:var(--muted-light);margin-bottom:2px}
-  .detail .d-unit{font-size:14px;color:#888;margin-bottom:16px}
-  .detail .bar-wrap{margin:12px 0}
-  .detail .bar-label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px}
-  .detail .bar-label .label{font-weight:600}
-  .detail .bar-label .val{font-weight:800;font-size:16px}
-  .detail .bar{height:32px;border-radius:8px;transition:width .4s ease;min-width:4px}
-  .detail .bar-red{background:linear-gradient(90deg,var(--red-bar),var(--red))}
-  .detail .bar-green{background:linear-gradient(90deg,var(--green-bar),var(--green-govt))}
-  .detail .bar-track{background:#f0ebe5;border-radius:8px;margin-bottom:12px}
-  .detail .d-loss{background:var(--amber-bg);border-radius:var(--radius-md);padding:16px 18px;margin:16px 0;text-align:center;border:1.5px solid #FCE4C5}
-  .detail .d-loss .big{font-size:22px;font-weight:800;color:var(--amber-dark);line-height:1.3}
-  .detail .d-loss .sub{font-size:14px;color:var(--muted);margin-top:4px}
-  .detail .d-tip{font-size:13px;color:#555;padding:12px 14px;background:var(--earth-bg);border-radius:var(--radius-sm);line-height:1.5;margin:12px 0}
-  .detail .d-source{font-size:11px;color:var(--muted-light);margin-top:10px;line-height:1.4}
-  .detail .d-onehealth{text-align:center;font-size:13px;font-weight:700;color:var(--green-mid);padding:16px 14px;margin:14px 0;background:#EDF5EE;border-radius:var(--radius-md);line-height:1.5;border:1px solid #D8EDDB}
-  .detail .d-onehealth .sw{font-weight:400;opacity:.8;font-size:12px;display:block;margin-top:4px}
-  .detail .btn-report{display:block;width:100%;text-align:center;background:var(--green-mid);color:#fff;border:none;border-radius:var(--radius-md);padding:16px;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px;transition:all .15s;min-height:52px}
-  .detail .btn-report:active{background:var(--green-dark);transform:scale(.98)}
-  .detail .btn-close{display:block;width:100%;text-align:center;background:var(--earth-bg);color:var(--muted);border:none;border-radius:var(--radius-md);padding:14px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;transition:all .15s;min-height:48px}
+/* Reports */
+.reports-panel{display:none}.reports-panel.show{display:block}
+.panel-header{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:20px;padding:16px 18px;border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow2);gap:10px}
+.count{font-size:14px;font-weight:850;color:#5A5349}
+.btn-new{background:var(--leaf);color:#fff;border:0;border-radius:14px;padding:10px 16px;font-size:13px;font-weight:900;cursor:pointer;min-height:44px;box-shadow:0 5px 13px rgba(45,106,79,.18);white-space:nowrap}
+.report-list-wrap{background:var(--card);border-radius:20px;padding:4px 16px;border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow2)}
+.report-item{padding:14px 0;border-bottom:1px solid #EFE5D7;font-size:13px;display:flex;align-items:center;gap:10px;min-height:50px}
+.report-item:last-child{border-bottom:0}
+.r-crop{font-weight:900;color:var(--ink)}.r-price{font-weight:900;color:var(--danger)}.r-meta{color:#756E64;font-size:12px;margin-left:auto;white-space:nowrap;font-weight:700}
+.empty{text-align:center;padding:30px 12px;color:#70685D;font-weight:750}
+.empty .ico{font-size:38px;display:block;margin-bottom:7px}
+.btn-export{display:block;width:100%;text-align:center;background:var(--card);color:var(--leaf);border:2px solid var(--leaf);border-radius:18px;padding:14px;font-size:14px;font-weight:900;cursor:pointer;min-height:50px}
+.btn-export:active{background:#E6F1E8;transform:scale(.985)}
 
-  .reports-panel{display:none}
-  .reports-panel.show{display:block}
-  .reports-panel .panel-header{display:flex;justify-content:space-between;align-items:center;background:var(--earth-card);border-radius:16px;padding:16px 18px;border:1px solid var(--earth-border);margin-bottom:10px}
-  .reports-panel .count{font-size:14px;font-weight:600;color:var(--muted)}
-  .reports-panel .btn-new{background:var(--green-mid);color:#fff;border:none;border-radius:var(--radius-sm);padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;min-height:44px}
-  .report-list-wrap{background:var(--earth-card);border-radius:16px;padding:4px 16px;border:1px solid var(--earth-border);margin-bottom:10px}
-  .report-item{padding:14px 0;border-bottom:1px solid #f0ebe5;font-size:13px;display:flex;align-items:center;gap:10px;min-height:48px}
-  .report-item:last-child{border-bottom:none}
-  .report-item .r-crop{font-weight:700;color:var(--ink)}
-  .report-item .r-price{font-weight:700;color:var(--red)}
-  .report-item .r-meta{color:var(--muted-light);font-size:12px;margin-left:auto;white-space:nowrap}
-  .btn-export{display:block;width:100%;text-align:center;background:var(--earth-card);color:var(--green-mid);border:2px solid var(--green-mid);border-radius:var(--radius-md);padding:14px;font-size:14px;font-weight:700;cursor:pointer;min-height:48px}
+/* Modal + toast */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(20,14,8,.48);z-index:100;align-items:flex-end;padding-bottom:env(safe-area-inset-bottom)}
+.modal-overlay.show{display:flex}
+.modal{background:var(--card);border-radius:28px 28px 0 0;padding:28px 24px max(34px,calc(26px + env(safe-area-inset-bottom)));width:100%;max-width:640px;margin:0 auto;max-height:90vh;overflow-y:auto;box-shadow:0 -18px 40px rgba(0,0,0,.2)}
+.modal:before{content:"";display:block;width:48px;height:5px;background:#D8CCBA;border-radius:99px;margin:-12px auto 18px}
+.modal h2{font-size:21px;color:var(--forest);font-weight:900;margin-bottom:4px;letter-spacing:-.3px}
+.modal .sub{font-size:14px;color:#5F584E;margin-bottom:20px;font-weight:700}
+.modal label{display:block;font-size:13px;font-weight:900;color:#4B473F;margin:15px 0 5px}
+.modal input,.modal select{width:100%;padding:14px;border:1.5px solid #DCCFBD;border-radius:14px;font-size:16px;background:#FFFDF8;min-height:50px;color:var(--ink)}
+.modal input:focus,.modal select:focus{border-color:var(--leaf);outline:0;box-shadow:0 0 0 4px rgba(45,106,79,.12)}
+.btn-submit{width:100%;padding:16px;margin-top:20px;background:linear-gradient(135deg,var(--leaf),#347A4F);color:#fff;border:0;border-radius:18px;font-size:16px;font-weight:900;cursor:pointer;min-height:54px}
+.btn-cancel{width:100%;padding:14px;margin-top:8px;background:#F2E9DC;color:#5E564C;border:0;border-radius:16px;font-size:14px;font-weight:850;cursor:pointer;min-height:48px}
+.success{display:none;text-align:center;padding:30px 0}.success .check{font-size:58px}.success .msg{font-size:17px;color:var(--leaf);font-weight:900;margin-top:10px}
+.toast{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:200;display:grid;place-items:center;pointer-events:none}
+.toast span{background:#23382B;color:#FFF8E8;border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 30px rgba(0,0,0,.25);border-radius:16px;padding:13px 16px;font-size:14px;font-weight:850;max-width:520px;width:fit-content}
 
-  .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.35);z-index:100;align-items:flex-end}
-  .modal-overlay.show{display:flex}
-  .modal{background:var(--earth-card);border-radius:24px 24px 0 0;padding:28px 24px 36px;width:100%;max-width:560px;margin:0 auto;max-height:90vh;overflow-y:auto;animation:slideUp .25s ease}
-  @keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-  .modal h2{font-size:20px;color:var(--green-dark);font-weight:800;margin-bottom:4px}
-  .modal .sub{font-size:13px;color:var(--muted);margin-bottom:20px}
-  .modal label{display:block;font-size:13px;font-weight:600;color:#555;margin:14px 0 4px}
-  .modal input,.modal select{width:100%;padding:14px;border:1.5px solid #e0d8d0;border-radius:var(--radius-sm);font-size:16px;background:var(--earth-card);min-height:48px}
-  .modal input:focus,.modal select:focus{border-color:var(--green-mid);outline:none;box-shadow:0 0 0 3px rgba(45,106,79,.1)}
-  .modal .btn-submit{width:100%;padding:16px;margin-top:20px;background:var(--green-mid);color:#fff;border:none;border-radius:var(--radius-md);font-size:16px;font-weight:700;cursor:pointer;min-height:52px}
-  .modal .btn-submit:active{background:var(--green-dark)}
-  .modal .btn-cancel{width:100%;padding:14px;margin-top:8px;background:var(--earth-bg);color:var(--muted);border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;min-height:48px}
-  .modal .success{display:none;text-align:center;padding:30px 0}
-  .modal .success .check{font-size:56px}
-  .modal .success .msg{font-size:17px;color:var(--green-mid);font-weight:700;margin-top:10px}
+.footer{text-align:center;padding:20px 16px 32px;font-size:12px;color:#746D62;line-height:1.6;font-weight:700}.footer strong{color:var(--leaf);font-weight:900}
 
-  .reports-panel .btn-new:active,.btn-export:active{background:#EDF5EE}
-  .btn-export:active,.modal .btn-cancel:active{background:#e0d8d0}
-
-  .footer{text-align:center;padding:20px 16px 32px;font-size:12px;color:var(--muted-light);line-height:1.6}
-  .footer strong{color:var(--green-mid)}
-
-  @media(max-width:380px){.wrap{padding:10px}.crop-grid{grid-template-columns:1fr;gap:8px}header .logo-mark{font-size:22px}header{padding:20px 16px 18px;border-radius:16px}.detail{padding:18px}.detail .d-name{font-size:20px}}
+@media(max-width:380px){
+  .wrap{padding:10px}.crop-grid{grid-template-columns:1fr;gap:9px}.cat-filter{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}
+  header{padding:24px 15px 17px;border-radius:22px}.logo-mark{font-size:25px}.tagline,.tagline .sw{font-size:14px}
+  .detail{padding:19px}.d-name{font-size:22px}.panel-header{padding:14px}.bar-label .val{font-size:16px}
+}
+@media(min-width:560px){
+  .crop-grid{gap:13px}.wrap{padding:20px}.crop-card{min-height:134px}.modal-overlay{align-items:center}.modal{border-radius:28px;max-height:86vh;padding-bottom:30px}
+}
+@media(orientation:landscape) and (max-height:520px){header{padding:18px 16px 14px}.modal{max-height:96vh}.logo-mark{font-size:24px}}
+@media(prefers-reduced-motion:no-preference){
+  .crop-card.enter{animation:cardIn .38s both cubic-bezier(.2,.8,.2,1)}
+  .crop-card.refresh{animation:softIn .22s both ease-out}
+  .detail.show{animation:detailIn .24s ease-out}
+  .modal{animation:slideUp .26s cubic-bezier(.2,.9,.2,1)}
+  .toast span{animation:toastIn .22s ease-out}
+  .bar.animate{transition:width .48s cubic-bezier(.2,.9,.25,1)}
+  .cat-filter button.active{animation:pulse .18s ease-out}
+  @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  @keyframes softIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  @keyframes detailIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes slideUp{from{transform:translateY(48px);opacity:0}to{transform:none;opacity:1}}
+  @keyframes toastIn{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+  @keyframes pulse{50%{transform:scale(1.04)}}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <div class="logo-mark"><span class="leaf">🌿</span> MazaoCheck</div>
+  <div class="logo-mark"><span class="leaf" aria-hidden="true">🌿</span> MazaoCheck</div>
   <div class="tagline">Know the real price before you sell.<span class="sw">Jua bei halisi kabla ya kuuza.</span></div>
-  <div class="updated" id="headerUpdated">Loading prices...</div>
+  <div class="updated" id="headerUpdated" aria-live="polite">Loading prices...</div>
 </header>
 
-<div class="tab-bar">
-  <button id="tabPrices" class="active" onclick="showTab('prices')">🌽 Prices / Bei</button>
-  <button id="tabReports" onclick="showTab('reports')">📊 Reports / Ripoti</button>
+<div class="tab-bar" role="tablist" aria-label="MazaoCheck sections">
+  <button id="tabPrices" class="active" role="tab" aria-selected="true" aria-controls="pricesTab" onclick="showTab('prices')">🌽 Prices / Bei</button>
+  <button id="tabReports" role="tab" aria-selected="false" aria-controls="reportsPanel" onclick="showTab('reports')">📊 Reports / Ripoti</button>
 </div>
 
-<div id="pricesTab">
-  <div class="search-box"><input type="text" id="search" placeholder="Search crop... / Tafuta zao..." autocomplete="off"></div>
-  <div class="cat-filter" id="catFilter">
-    <button class="active" data-cat="all" onclick="filterCat('all')">All</button>
-    <button data-cat="vegetable" onclick="filterCat('vegetable')">Vegetables</button>
-    <button data-cat="traditional" onclick="filterCat('traditional')">Traditional</button>
-    <button data-cat="cereal" onclick="filterCat('cereal')">Cereals</button>
-    <button data-cat="fruit" onclick="filterCat('fruit')">Fruits</button>
-    <button data-cat="animal" onclick="filterCat('animal')">Animals</button>
+<div id="pricesTab" role="tabpanel" aria-labelledby="tabPrices">
+  <div class="search-box"><input type="text" id="search" placeholder="Search crop... / Tafuta zao..." autocomplete="off" aria-label="Search crop or product"></div>
+  <div class="cat-filter" id="catFilter" aria-label="Filter crops by category">
+    <button class="active" data-cat="all" onclick="filterCat('all')" aria-pressed="true">All</button>
+    <button data-cat="vegetable" onclick="filterCat('vegetable')" aria-pressed="false">Vegetables</button>
+    <button data-cat="traditional" onclick="filterCat('traditional')" aria-pressed="false">Traditional</button>
+    <button data-cat="cereal" onclick="filterCat('cereal')" aria-pressed="false">Cereals</button>
+    <button data-cat="fruit" onclick="filterCat('fruit')" aria-pressed="false">Fruits</button>
+    <button data-cat="animal" onclick="filterCat('animal')" aria-pressed="false">Animals</button>
   </div>
-  <div class="crop-grid" id="cropGrid"></div>
+  <div class="crop-grid" id="cropGrid" aria-live="polite"></div>
 </div>
 
-<div class="reports-panel" id="reportsPanel">
+<div class="reports-panel" id="reportsPanel" role="tabpanel" aria-labelledby="tabReports">
   <div class="panel-header">
     <div class="count" id="reportCount">No reports yet</div>
     <button class="btn-new" onclick="showReportModal(null)">+ New Report</button>
@@ -157,12 +207,12 @@
   <button class="btn-export" onclick="exportCSV()">📥 Download CSV / Pakua ripoti</button>
 </div>
 
-<div class="detail" id="detail">
+<div class="detail" id="detail" aria-live="polite">
   <div class="d-name" id="dName"></div>
   <div class="d-name-sw" id="dNameSw"></div>
   <div class="d-unit" id="dUnit"></div>
-  <div class="bar-wrap"><div class="bar-label"><span class="label" style="color:var(--red)">Broker / Dalali</span><span class="val" style="color:var(--red)" id="dBrokerVal"></span></div><div class="bar-track"><div class="bar bar-red" id="dBrokerBar"></div></div></div>
-  <div class="bar-wrap"><div class="bar-label"><span class="label" style="color:var(--green-govt)">Government (KNBS/AFA)</span><span class="val" style="color:var(--green-govt)" id="dGovtVal"></span></div><div class="bar-track"><div class="bar bar-green" id="dGovtBar"></div></div></div>
+  <div class="bar-wrap"><div class="bar-label"><span class="label" style="color:var(--danger)">Broker / Dalali</span><span class="val" style="color:var(--danger)" id="dBrokerVal"></span></div><div class="bar-track"><div class="bar bar-red" id="dBrokerBar"></div></div></div>
+  <div class="bar-wrap"><div class="bar-label"><span class="label" style="color:var(--ok)">Government (KNBS/AFA)</span><span class="val" style="color:var(--ok)" id="dGovtVal"></span></div><div class="bar-track"><div class="bar bar-green" id="dGovtBar"></div></div></div>
   <div class="d-loss" id="dLoss"></div>
   <div class="d-tip" id="dTip"></div>
   <div class="d-onehealth">🌱 One honest price: organic inputs for your soil → dewormer for your goat → fresh food for your family. One number, three kinds of health.<br><span class="sw">Bei moja ya haki: mbolea hai kwa udongo → dawa ya minyoo kwa mnyama → chakula safi kwa familia. Nambari moja, afya tatu.</span></div>
@@ -171,14 +221,14 @@
   <button class="btn-close" onclick="closeDetail()">← Back / Nyuma</button>
 </div>
 
-<div class="modal-overlay" id="reportModal">
+<div class="modal-overlay" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
   <div class="modal">
     <div id="reportForm">
-      <h2>📝 Report the price you got</h2>
+      <h2 id="reportTitle">📝 Report the price you got</h2>
       <div class="sub">Ripoti bei uliyopata — hii inasaidia wakulima wengine kujua bei halisi</div>
-      <label>Crop / Zao</label><select id="rCrop"></select>
-      <label>What price did you get? (KES) / Umeuza kwa bei gani?</label><input type="number" id="rPrice" placeholder="e.g. 30" min="1">
-      <label>Which county? / Kaunti gani?</label>
+      <label for="rCrop">Crop / Zao</label><select id="rCrop"></select>
+      <label for="rPrice">What price did you get? (KES) / Umeuza kwa bei gani?</label><input type="number" id="rPrice" placeholder="e.g. 30" min="1">
+      <label for="rCounty">Which county? / Kaunti gani?</label>
       <select id="rCounty">
         <option value="">Select county / Chagua kaunti</option>
         <option>Baringo</option><option>Bomet</option><option>Bungoma</option><option>Busia</option><option>Elgeyo Marakwet</option><option>Embu</option><option>Garissa</option><option>Homa Bay</option><option>Isiolo</option><option>Kajiado</option><option>Kakamega</option><option>Kericho</option><option>Kiambu</option><option>Kilifi</option><option>Kirinyaga</option><option>Kisii</option><option>Kisumu</option><option>Kitui</option><option>Kwale</option><option>Laikipia</option><option>Lamu</option><option>Machakos</option><option>Makueni</option><option>Mandera</option><option>Marsabit</option><option>Meru</option><option>Migori</option><option>Mombasa</option><option>Murang'a</option><option>Nairobi</option><option>Nakuru</option><option>Nandi</option><option>Narok</option><option>Nyamira</option><option>Nyandarua</option><option>Nyeri</option><option>Samburu</option><option>Siaya</option><option>Taita Taveta</option><option>Tana River</option><option>Tharaka Nithi</option><option>Trans Nzoia</option><option>Turkana</option><option>Uasin Gishu</option><option>Vihiga</option><option>Wajir</option><option>West Pokot</option>
@@ -194,6 +244,7 @@
   </div>
 </div>
 
+<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
 <div class="footer"><strong>Honest data is Kenya's climate infrastructure.</strong></div>
 </div>
 
@@ -249,8 +300,9 @@ const PRICES = {
   ]
 };
 
-let currentCrop = null, activeCat = "all", currentTab = "prices";
-document.getElementById("headerUpdated").textContent = "Prices last updated: " + fmtDate(PRICES.lastUpdated) + " · " + PRICES.crops.length + " crops · Source: KNBS/AFA";
+let currentCrop = null, activeCat = "all", currentTab = "prices", firstGrid = true, searchTimer = null, toastTimer = null;
+
+document.getElementById("headerUpdated").textContent = "● Prices last updated: " + fmtDate(PRICES.lastUpdated) + " · " + PRICES.crops.length + " crops · KNBS/AFA";
 
 function fmtDate(iso) {
   const m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -258,7 +310,18 @@ function fmtDate(iso) {
   return d.getUTCDate() + " " + m[d.getUTCMonth()] + " " + d.getUTCFullYear();
 }
 
-function renderGrid() {
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  clearTimeout(toastTimer);
+  t.innerHTML = "<span>" + esc(msg) + "</span>";
+  toastTimer = setTimeout(() => { t.innerHTML = ""; }, 2800);
+}
+
+function renderGrid(soft) {
   const grid = document.getElementById("cropGrid");
   grid.innerHTML = "";
   const q = (document.getElementById("search").value || "").toLowerCase().trim();
@@ -270,6 +333,7 @@ function renderGrid() {
     byCat[c.cat].push(c);
   });
   const catLabels = { traditional:"Traditional / Kienyeji", vegetable:"Vegetables", cereal:"Cereals", fruit:"Fruits", animal:"Animal Products" };
+  let i = 0, total = 0;
   Object.entries(byCat).forEach(([cat, crops]) => {
     if (crops.length === 0) return;
     if (!q) {
@@ -279,26 +343,41 @@ function renderGrid() {
       grid.appendChild(label);
     }
     crops.forEach(c => {
+      total++;
       const loss = c.govPrice - c.brokerPrice;
       const pct = Math.round((loss / c.govPrice) * 100);
-      const card = document.createElement("div");
-      card.className = "crop-card";
-      const tradBadge = c.cat === 'traditional' ? '<div class="trad-badge">Kienyeji</div>' : '';
-      card.innerHTML = tradBadge + `<div class="name">${c.name}</div><div class="name-sw">${c.nameSw}</div><div class="unit">${c.unit}</div><div class="prices"><span class="broker">KES ${c.brokerPrice}</span><span class="govt">KES ${c.govPrice}</span></div><div class="loss">-${loss} KES (${pct}%)</div>`;
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "crop-card " + (firstGrid ? "enter" : soft ? "refresh" : "");
+      card.dataset.cat = c.cat;
+      card.style.animationDelay = firstGrid ? Math.min(i * 28, 420) + "ms" : "";
+      card.setAttribute("aria-label", c.name + ", broker KES " + c.brokerPrice + ", government KES " + c.govPrice + ", loss " + loss + " KES");
+      const tradBadge = c.cat === "traditional" ? '<div class="trad-badge">Kienyeji</div>' : "";
+      card.innerHTML = tradBadge + `<div class="name">${esc(c.name)}</div><div class="name-sw">${esc(c.nameSw)}</div><div class="unit">${esc(c.unit)}</div><div class="prices"><span class="broker">KES ${c.brokerPrice}</span><span class="govt">KES ${c.govPrice}</span></div><div class="loss">-${loss} KES (${pct}%)</div>`;
       card.onclick = () => showDetail(c.key);
       grid.appendChild(card);
+      i++;
     });
   });
+  if (total === 0) grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><span class="ico">🌾</span>No crops found.<br>Tafuta kwa jina lingine.</div>';
+  firstGrid = false;
 }
 
 function filterCat(cat) {
   activeCat = cat;
-  document.querySelectorAll(".cat-filter button").forEach(b => b.classList.toggle("active", b.dataset.cat === cat));
-  renderGrid();
+  document.querySelectorAll(".cat-filter button").forEach(b => {
+    const on = b.dataset.cat === cat;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  renderGrid(true);
   closeDetail();
 }
 
-document.getElementById("search").addEventListener("input", () => { renderGrid(); closeDetail(); });
+document.getElementById("search").addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { renderGrid(true); closeDetail(); }, 150);
+});
 
 function showDetail(key) {
   const c = PRICES.crops.find(x => x.key === key);
@@ -307,41 +386,62 @@ function showDetail(key) {
   const loss = c.govPrice - c.brokerPrice;
   const pct = Math.round((loss / c.govPrice) * 100);
   const maxVal = Math.max(c.govPrice, c.brokerPrice);
+  const brokerW = ((c.brokerPrice / maxVal) * 100) + "%";
+  const brokerBar = document.getElementById("dBrokerBar");
+  const govtBar = document.getElementById("dGovtBar");
+
   document.getElementById("dName").textContent = c.name;
   document.getElementById("dNameSw").textContent = c.nameSw || "";
   document.getElementById("dUnit").textContent = c.unit;
   document.getElementById("dBrokerVal").textContent = "KES " + c.brokerPrice;
   document.getElementById("dGovtVal").textContent = "KES " + c.govPrice;
-  document.getElementById("dBrokerBar").style.width = ((c.brokerPrice / maxVal) * 100) + "%";
-  document.getElementById("dGovtBar").style.width = "100%";
-  document.getElementById("dLoss").innerHTML = `<div class="big">⚠️ You may be underpaid ${loss} KES — ${pct}% below the government price</div><div class="sub">Unaweza kupunjwa ${loss} KES — ${pct}% chini ya bei ya serikali</div>`;
-  document.getElementById("dTip").innerHTML = "🌱 " + c.tip;
+  brokerBar.classList.remove("animate");
+  govtBar.classList.remove("animate");
+  brokerBar.style.width = "0";
+  govtBar.style.width = "0";
+  document.getElementById("dLoss").innerHTML = '<div class="big">⚠️ You may be underpaid ' + loss + ' KES — ' + pct + '% below the government price</div><div class="sub">Unaweza kupunjwa ' + loss + ' KES — ' + pct + '% chini ya bei ya serikali</div>';
+  document.getElementById("dTip").innerHTML = "🌱 " + esc(c.tip);
   document.getElementById("dSource").textContent = "Government price source: " + PRICES.source + ". Last updated: " + fmtDate(PRICES.lastUpdated) + ". Broker price: farmer-reported / field quote being validated.";
   document.getElementById("detail").classList.add("show");
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    brokerBar.classList.add("animate");
+    govtBar.classList.add("animate");
+    brokerBar.style.width = brokerW;
+    govtBar.style.width = "100%";
+  }));
   document.getElementById("detail").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function closeDetail() { document.getElementById("detail").classList.remove("show"); currentCrop = null; }
+function closeDetail() {
+  document.getElementById("detail").classList.remove("show");
+  currentCrop = null;
+}
 
 function showTab(tab) {
   currentTab = tab;
-  document.getElementById("tabPrices").classList.toggle("active", tab === "prices");
-  document.getElementById("tabReports").classList.toggle("active", tab === "reports");
-  document.getElementById("pricesTab").style.display = tab === "prices" ? "block" : "none";
-  document.getElementById("reportsPanel").classList.toggle("show", tab === "reports");
-  if (tab === "reports") renderReports();
+  const prices = tab === "prices";
+  document.getElementById("tabPrices").classList.toggle("active", prices);
+  document.getElementById("tabReports").classList.toggle("active", !prices);
+  document.getElementById("tabPrices").setAttribute("aria-selected", prices ? "true" : "false");
+  document.getElementById("tabReports").setAttribute("aria-selected", !prices ? "true" : "false");
+  document.getElementById("pricesTab").style.display = prices ? "block" : "none";
+  document.getElementById("reportsPanel").classList.toggle("show", !prices);
+  if (!prices) renderReports();
 }
 
 function renderReports() {
   const reports = getReports();
-  document.getElementById("reportCount").textContent = reports.length + " report" + (reports.length !== 1 ? "s" : "");
+  document.getElementById("reportCount").textContent = reports.length ? reports.length + " report" + (reports.length !== 1 ? "s" : "") : "No reports yet";
   const list = document.getElementById("reportList");
   list.innerHTML = "";
-  if (reports.length === 0) { list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted-light)">No reports yet. Tap "+ New" to submit one.</div>'; return; }
+  if (reports.length === 0) {
+    list.innerHTML = '<div class="empty"><span class="ico">🧺</span>No reports yet.<br>Tap "+ New" to submit one.</div>';
+    return;
+  }
   [...reports].reverse().slice(0, 30).forEach(r => {
     const d = document.createElement("div");
     d.className = "report-item";
-    d.innerHTML = `<span class="r-crop">${r.crop}</span><span class="r-price">KES ${r.price}</span><span class="r-meta">${r.county} · ${r.date}</span>`;
+    d.innerHTML = '<span class="r-crop">' + esc(r.crop) + '</span><span class="r-price">KES ' + esc(r.price) + '</span><span class="r-meta">' + esc(r.county) + ' · ' + esc(r.date) + '</span>';
     list.appendChild(d);
   });
 }
@@ -361,30 +461,52 @@ function showReportModal(crop) {
   document.getElementById("reportForm").style.display = "block";
   document.getElementById("reportSuccess").style.display = "none";
   document.getElementById("reportModal").classList.add("show");
+  setTimeout(() => document.getElementById("rPrice").focus(), 80);
 }
 
-function hideReportModal() { document.getElementById("reportModal").classList.remove("show"); }
+function hideReportModal() {
+  document.getElementById("reportModal").classList.remove("show");
+}
 
 async function submitReport() {
   const crop = document.getElementById("rCrop").value;
   const price = parseInt(document.getElementById("rPrice").value, 10);
   const county = document.getElementById("rCounty").value;
-  if (!crop || !price || !county) { alert("Please fill all fields / Tafadhali jaza sehemu zote."); return; }
+  if (!crop || !price || !county) {
+    toast("Please fill all fields / Tafadhali jaza sehemu zote.");
+    return;
+  }
   const report = { crop, price, county, date: new Date().toISOString().slice(0, 10) };
   cachedReports.push(report);
   if (SUPABASE_URL && SUPABASE_ANON_KEY) {
-    try { await fetch(SUPABASE_URL + "/rest/v1/reports", { method:"POST", headers: { "apikey":SUPABASE_ANON_KEY, "Authorization":"Bearer "+SUPABASE_ANON_KEY, "Content-Type":"application/json", "Prefer":"return=minimal" }, body: JSON.stringify({crop:report.crop, price_kes:report.price, county:report.county}) }); } catch(e) { localStorage.setItem("mazaocheck_reports", JSON.stringify(cachedReports)); }
-  } else { localStorage.setItem("mazaocheck_reports", JSON.stringify(cachedReports)); }
+    try {
+      await fetch(SUPABASE_URL + "/rest/v1/reports", {
+        method:"POST",
+        headers: { "apikey":SUPABASE_ANON_KEY, "Authorization":"Bearer "+SUPABASE_ANON_KEY, "Content-Type":"application/json", "Prefer":"return=minimal" },
+        body: JSON.stringify({crop:report.crop, price_kes:report.price, county:report.county})
+      });
+    } catch(e) {
+      localStorage.setItem("mazaocheck_reports", JSON.stringify(cachedReports));
+    }
+  } else {
+    localStorage.setItem("mazaocheck_reports", JSON.stringify(cachedReports));
+  }
   document.getElementById("reportForm").style.display = "none";
   document.getElementById("reportSuccess").style.display = "block";
   renderReports();
+  toast("Report saved / Ripoti imehifadhiwa");
+  setTimeout(hideReportModal, 3000);
 }
 
 function exportCSV() {
   const reports = getReports();
-  if (reports.length === 0) { alert("No reports to export."); return; }
+  if (reports.length === 0) {
+    toast("No reports to export.");
+    return;
+  }
+  toast("Downloading reports...");
   let csv = "crop,price_kes,county,date\n";
-  reports.forEach(r => { csv += '"' + r.crop + '",' + r.price + ',"' + r.county + '","' + r.date + '"\n'; });
+  reports.forEach(r => { csv += '"' + String(r.crop).replace(/"/g,'""') + '",' + r.price + ',"' + String(r.county).replace(/"/g,'""') + '","' + r.date + '"\n'; });
   const blob = new Blob([csv], { type: "text/csv" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -392,6 +514,10 @@ function exportCSV() {
   a.click();
   URL.revokeObjectURL(a.href);
 }
+
+document.getElementById("reportModal").addEventListener("click", e => {
+  if (e.target.id === "reportModal") hideReportModal();
+});
 
 renderGrid();
 loadReports().then(() => renderReports());
