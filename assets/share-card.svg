@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#2E7D32"/>
+  <text x="80" y="180" font-family="Montserrat, Arial, sans-serif" font-size="86" font-weight="800" fill="#FFFFFF">MazaoCheck</text>
+  <text x="80" y="250" font-family="Inter, Arial, sans-serif" font-size="34" fill="#E8F5E9">Jua bei halisi ya mazao yako. Bure, kwa simu yoyote.</text>
+  <rect x="80" y="330" width="380" height="54" rx="8" fill="#C62828"/>
+  <text x="100" y="368" font-family="Inter, Arial" font-size="30" fill="#fff" font-weight="700">Dalali: 28 KES</text>
+  <rect x="80" y="404" width="620" height="54" rx="8" fill="#1B5E20"/>
+  <text x="100" y="442" font-family="Inter, Arial" font-size="30" fill="#fff" font-weight="700">Serikali (KNBS): 45 KES</text>
+  <rect x="80" y="486" width="300" height="48" rx="24" fill="#F9A825"/>
+  <text x="100" y="519" font-family="Inter, Arial" font-size="28" fill="#1B1B1B" font-weight="700">Unapunjwa 38%</text>
+  <text x="80" y="595" font-family="Inter, Arial" font-size="26" fill="#E8F5E9">geraldkombo.github.io/mazaocheck · Honest data is Kenya's climate infrastructure</text>
+</svg>

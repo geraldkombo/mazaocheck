@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+  <rect width="320" height="120" fill="#FFFFFF"/>
+  <path d="M40 90 C40 50 70 30 100 28 C95 60 70 88 40 90 Z" fill="#2E7D32"/>
+  <path d="M40 90 C55 70 78 52 96 40" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="118" y="64" width="34" height="14" rx="3" fill="#C62828"/>
+  <rect x="118" y="44" width="58" height="14" rx="3" fill="#2E7D32"/>
+  <text x="118" y="34" font-family="Montserrat, Arial, sans-serif" font-size="26" font-weight="700" fill="#1B1B1B">MazaoCheck</text>
+  <text x="118" y="98" font-family="Inter, Arial, sans-serif" font-size="12" fill="#666">Bei ya haki. Afya kwa wote.</text>
+</svg>
