@@ -69,6 +69,7 @@ header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;ba
 
 /* Grid/cards */
 .crop-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:16px;contain:content}
+.asof{text-align:center;font-size:11px;color:var(--muted);font-weight:750;margin:0 0 14px}
 .section-label{font-size:12px;font-weight:900;color:#675F54;margin:8px 0 0;text-transform:uppercase;letter-spacing:.9px;grid-column:1/-1;display:flex;align-items:center;gap:8px}
 .section-label:after{content:"";height:1px;flex:1;background:var(--line)}
 .crop-card{background:linear-gradient(180deg,#FFFDF9,#FFF9F1);border-radius:19px;padding:16px 13px 15px;box-shadow:var(--shadow2);cursor:pointer;transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;overflow:hidden;border:1px solid var(--line);min-height:128px;contain:content;will-change:transform,opacity}
@@ -200,6 +201,7 @@ header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;ba
     <button data-cat="animal" onclick="filterCat('animal')" aria-pressed="false">Animals</button>
   </div>
   <div class="crop-grid" id="cropGrid" aria-live="polite"></div>
+  <p class="asof" id="asOfNote"></p>
 </div>
 
 <div class="reports-panel" id="reportsPanel" role="tabpanel" aria-labelledby="tabReports">
@@ -304,14 +306,21 @@ const PRICES = {
   ]
 };
 
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 let currentCrop = null, activeCat = "all", currentTab = "prices", firstGrid = true, searchTimer = null, toastTimer = null;
 
 document.getElementById("headerUpdated").textContent = "● Prices last updated: " + fmtDate(PRICES.lastUpdated) + " · " + PRICES.crops.length + " products · KNBS/AFA";
+document.getElementById("asOfNote").textContent = "Prices as of " + fmtMonthYear(PRICES.lastUpdated) + " · Source: " + PRICES.source;
 
 function fmtDate(iso) {
-  const m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const d = new Date(iso + "T00:00:00Z");
-  return d.getUTCDate() + " " + m[d.getUTCMonth()] + " " + d.getUTCFullYear();
+  return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear();
+}
+
+function fmtMonthYear(iso) {
+  const d = new Date(iso + "T00:00:00Z");
+  return MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear();
 }
 
 function esc(s) {
