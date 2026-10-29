@@ -15,7 +15,7 @@ A free, single-page web tool that shows Kenyan farmers the official government r
 ## Price data & sourcing
 - **Government prices:** official references from KNBS Statistical Releases and AFA market bulletins.
 - **Broker prices:** farmer-reported field quotes, growing as more farmers report. No fabricated numbers.
-- **As of:** 25 June 2026 — shown in the app header and under the price grid, driven by `PRICES.lastUpdated`.
+- **As of:** 29 October 2026 — shown in the app header and under the price grid, driven by `PRICES.lastUpdated`. Categories without a newer official release retain their June 2026 values.
 - All prices are hardcoded in the `PRICES` constant in `index.html`. To refresh: edit the values there and bump `lastUpdated`.
 
 ## Run / edit

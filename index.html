@@ -271,15 +271,15 @@ async function loadReports() {
 function getReports() { return cachedReports; }
 
 const PRICES = {
-  lastUpdated: "2026-06-25",
+  lastUpdated: "2026-10-29",
   source: "KNBS Statistical Releases & AFA market bulletins",
   crops: [
     { key:"sukuma wiki",name:"Sukuma Wiki",nameSw:"Sukuma Wiki / Kale",unit:"per bunch",govPrice:45,brokerPrice:28,cat:"vegetable",tip:"Compost boost: sukuma wiki with compost holds more moisture and yields better leaves." },
     { key:"spinach",name:"Spinach",nameSw:"Spinachi / Mchicha",unit:"per bunch",govPrice:50,brokerPrice:32,cat:"vegetable",tip:"Intercrop spinach with maize — natural shade reduces water loss." },
-    { key:"cabbage",name:"Cabbage",nameSw:"Kabeji",unit:"per head",govPrice:40,brokerPrice:25,cat:"vegetable",tip:"Rotate cabbage with legumes to restore nitrogen for the next season." },
-    { key:"tomatoes",name:"Tomatoes",nameSw:"Nyanya",unit:"per kg",govPrice:80,brokerPrice:55,cat:"vegetable",tip:"Mulch around tomatoes — it cuts watering need and keeps soil cool." },
-    { key:"onions",name:"Onions",nameSw:"Kitunguu",unit:"per kg",govPrice:90,brokerPrice:60,cat:"vegetable",tip:"Plant onions near carrots — they deter each other's pests naturally." },
-    { key:"potatoes",name:"Irish Potatoes",nameSw:"Viazi",unit:"per kg",govPrice:60,brokerPrice:42,cat:"vegetable",tip:"Rotate potatoes with beans or maize to prevent blight buildup in the soil." },
+    { key:"cabbage",name:"Cabbage",nameSw:"Kabeji",unit:"per head",govPrice:80,brokerPrice:55,cat:"vegetable",tip:"Rotate cabbage with legumes to restore nitrogen for the next season." },
+    { key:"tomatoes",name:"Tomatoes",nameSw:"Nyanya",unit:"per kg",govPrice:120,brokerPrice:80,cat:"vegetable",tip:"Mulch around tomatoes — it cuts watering need and keeps soil cool." },
+    { key:"onions",name:"Onions",nameSw:"Kitunguu",unit:"per kg",govPrice:130,brokerPrice:85,cat:"vegetable",tip:"Plant onions near carrots — they deter each other's pests naturally." },
+    { key:"potatoes",name:"Irish Potatoes",nameSw:"Viazi",unit:"per kg",govPrice:140,brokerPrice:95,cat:"vegetable",tip:"Rotate potatoes with beans or maize to prevent blight buildup in the soil." },
     { key:"carrots",name:"Carrots",nameSw:"Karoti",unit:"per kg",govPrice:70,brokerPrice:48,cat:"vegetable",tip:"Thin carrot seedlings early — crowded carrots grow small and twisted." },
     { key:"managu",name:"Managu",nameSw:"Managu / African Nightshade",unit:"per bunch",govPrice:40,brokerPrice:25,cat:"traditional",tip:"Managu is rich in iron and vitamins — harvest young leaves for best tenderness." },
     { key:"terere",name:"Terere",nameSw:"Terere / Amaranth",unit:"per bunch",govPrice:35,brokerPrice:22,cat:"traditional",tip:"Terere grows fast in warm weather — successive sowing gives continuous harvest." },
@@ -299,7 +299,7 @@ const PRICES = {
     { key:"mangoes",name:"Mangoes",nameSw:"Maembe",unit:"per piece",govPrice:25,brokerPrice:15,cat:"fruit",tip:"Mango trees need minimal water once established — ideal for semi-arid areas." },
     { key:"passion fruit",name:"Passion Fruit",nameSw:"Pasheni",unit:"per piece",govPrice:10,brokerPrice:6,cat:"fruit",tip:"Passion fruit vines produce within 8 months — good quick cash crop for small farms." },
     { key:"pineapple",name:"Pineapple",nameSw:"Nanasi / Mananasi",unit:"per piece",govPrice:80,brokerPrice:55,cat:"fruit",tip:"Pineapple grows on marginal soil with little water — plant on ridges to prevent rot." },
-    { key:"milk",name:"Milk",nameSw:"Maziwa",unit:"per litre",govPrice:60,brokerPrice:42,cat:"animal",tip:"Clean water and shade for dairy cows directly improve milk quality and yield." },
+    { key:"milk",name:"Milk",nameSw:"Maziwa",unit:"per litre",govPrice:65,brokerPrice:42,cat:"animal",tip:"Clean water and shade for dairy cows directly improve milk quality and yield." },
     { key:"eggs",name:"Eggs",nameSw:"Mayai",unit:"per tray",govPrice:480,brokerPrice:360,cat:"animal",tip:"Free-range hens on kitchen scraps and greens produce eggs with deeper yolks." },
     { key:"chicken",name:"Free-range Chicken",nameSw:"Kuku wa Kienyeji",unit:"per bird",govPrice:800,brokerPrice:550,cat:"animal",tip:"Indigenous chickens need minimal feeding — they scavenge and control pests naturally." },
     { key:"goat",name:"Goat (live)",nameSw:"Mbuzi",unit:"per animal",govPrice:5000,brokerPrice:3500,cat:"animal",tip:"Dual-purpose goats provide meat and manure — rotate grazing to prevent overgrazing." }
